@@ -1,0 +1,197 @@
+<html>
+
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>푸시 메시지 보내기</title>
+
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+            integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+            crossorigin="anonymous">
+        <script
+            src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+        <script
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+            integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+            crossorigin="anonymous"></script>
+
+    </head>
+
+    <body>
+
+        <div class="container jumbotron ">
+            <h2 class="card-title">푸시 메시지 보내기</h2>
+            <div class="card">
+
+                <div class="card-body">
+
+                    <form
+                        action="SendPush/send"
+                        name="pushMessage"
+                        method="post"
+                        enctype="multipart/form-data">
+                        <p>관리자 인증
+                            <input class="form-control" type="current-password" name="login"/></p>
+                        <p>타이틀</p><input class="form-control" name="msgtitle" type="text"/>
+                        <p>바디</p>
+                        <textarea
+                            class="form-control"
+                            name="body"
+                            type="text"
+                            id="textarea-input"
+                            rows="5"></textarea>
+
+                        <!-- 이미지 업로드 상태 출력 <p id="status" class="success">File &amp; FileReader</p> -->
+                        <p class="mt-5">이미지 업로드</p><input type="file" name="userfile" id="inputFileToLoad"/>
+
+                        <div class="mt-4">
+                            <div class="jumbotron">
+                                <div id="holder" style="width:100%" ></div>
+                            </div>
+                            <div
+                                class="form-group has-error"
+                                style="padding:10px; border: #ad5c04 dashed 1px;">
+
+                                <label class="control-label" for="text-input">Link Button Title</label>
+                                <input class="form-control" type="text" name="linkbtn" id="text-input">
+                                <i class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></i>
+                                <label class="control-label" for="text-input">Link Address</label>
+                                <input class="form-control" type="text" name="linkaddress" id="text-input">
+                                <i class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></i>
+                            </div>
+                            <button class="btn btn-info btn-lg" id="btn" type="submit" name="test">테스트 발송</button>
+                            <button class="btn btn-success btn-lg" id="btn" type="submit" name="all">전체 발송</button>
+
+							<div class="mt-3">
+								
+								<select id="select1" name="place" class="form-control form-control-lg col-md-4">
+									<option  selected value="0"> -- 지역 선택 -- </option>
+									<option value="지역없음">지역없음</option>
+									<option value="1지역">1지역</option>
+									<option value="2지역">2지역</option>
+									<option value="3지역">3지역</option>
+									<option value="4지역">4지역</option>
+									<option value="5지역">5지역</option>
+									<option value="6지역">6지역</option>
+									<option value="7지역">7지역</option>
+								</select>
+								<select id="select1" name="subgroup" class="form-control form-control-lg col-md-4">
+									<option  selected value="0"> -- 기관 선택 -- </option>
+									<option value="지역없음">기관없음</option>
+									<option value="영아부">영아부</option>
+									<option value="유치부">유치부</option>
+									<option value="유년부">유년부</option>
+									<option value="초등부">초등부</option>
+									<option value="중등부">중등부</option>
+									<option value="고등부">고등부</option>
+									<option value="1청년부">1청년부</option>
+									<option value="2청년부">2청년부</option>
+									<option value="3청년부">3청년부</option>																	
+									<option value="신혼청년부">신혼청년부</option>										
+									<option value="에녹소망회">에녹소망회</option>
+									<option value="갈렙회">갈렙회</option>
+									<option value="사라회">사라회</option>									
+									<option value="나오미회">나오미회</option>
+									<option value="1남전도회">1남전도회</option>
+									<option value="2남전도회">2남전도회</option>
+									<option value="3남전도회">3남전도회</option>
+									<option value="4남전도회">4남전도회</option>
+									<option value="5남전도회">5남전도회</option>
+									<option value="6남전도회">6남전도회</option>
+									<option value="1여전도회">1여전도회</option>
+									<option value="2여전도회">2여전도회</option>
+									<option value="3여전도회">3여전도회</option>
+									<option value="4여전도회">4여전도회</option>
+									<option value="5여전도회">5여전도회</option>
+									<option value="6여전도회">6여전도회</option>
+									<option value="7여전도회">7여전도회</option>
+									<option value="8여전도회">8여전도회</option>
+									<option value="9여전도회">9여전도회</option>
+									<option value="10여전도회">10여전도회</option>
+
+							
+								</select>
+								<select id="select1" name="title" class="form-control form-control-lg col-md-4">
+									<option  selected value="0"> -- 직분 선택 -- </option>
+									<option value="직분없음">직분없음</option>
+									<option value="교역자">교역자</option>
+									<option value="장로">장로</option>
+									<option value="권사">권사</option>
+									<option value="장립집사">장립집사</option>
+									<option value="서리집사">서리집사</option>
+									<option value="간사">간사</option>
+								</select>
+								<select id="select1" name="subtitle" class="form-control form-control-lg col-md-4">
+									<option  selected value="0"> -- 순직책 선택 -- </option>
+									<option value="순직책없음">순직책없음</option>
+									<option value="교구장">교구장</option>
+									<option value="지역권사">지역권사</option>
+									<option value="순장">순장</option>
+									<option value="순원">순원</option>
+								</select>
+								<button class="btn btn-success btn-lg" id="btn" type="" name="group" onclick="checkGroup()">그룹 발송</button><p id="demo"></p>
+
+							</div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+<script>
+    var upload = document.getElementById('inputFileToLoad'),
+        holder = document.getElementById('holder');
+    //    이미지 업로드 상태 출력 		,     state = document.getElementById('status');
+
+    /*
+if (typeof window.FileReader == 'undefined') {
+  state.className = 'fail';
+} else {
+  state.className = 'success';
+  state.innerHTML = 'File API & FileReader available!';
+
+}
+*/
+
+    upload.onchange = function (e) {
+        e.preventDefault();
+        var file   = upload.files[0],
+            reader = new FileReader();
+        reader.onload = function (event) {
+            var img = new Image();
+            img.src = event.target.result;
+            // note: no onload required since we've got the dataurl...I think! :)
+			
+			//이미지 크기조정
+			var width = holder.style.width;
+			img.style.width = width;
+            holder.innerHTML = '';
+            holder.appendChild(img);
+        };
+        reader.readAsDataURL(file);
+
+        return false;
+    };
+    
+function checkGroup() {
+    var obj = document.getElementById("select1");
+    document.getElementById("demo").innerHTML = obj.options[obj.selectedIndex].text;
+}
+</script>
+
+<!-- <script type="text/javascript"> function strReplace(subject, search,
+replace) { return subject.split(search).join(replace); }; window.onload =
+function() { document.getElementById('btn').onclick = function() {
+document.getElementById('textarea-input').value =
+strReplace(document.getElementById('textarea-input').value , '\n', '<br>');
+document.getElementById('frm').submit(); return false; }; }; </script> -->
