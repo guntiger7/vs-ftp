@@ -28,7 +28,7 @@
     <body>
 
         <div class="container jumbotron ">
-            <h2 class="card-title">푸시 메시지 보내기</h2>
+            <h2 class="card-title">푸시 메시지 보내기 <?php echo $userName; ?></h2>
             <div class="card">
 
                 <div class="card-body">
@@ -37,7 +37,9 @@
                         action="SendPush/send"
                         name="pushMessage"
                         method="post"
-                        enctype="multipart/form-data">
+                        enctype="multipart/form-data"
+	                    id="idForm"
+	                    onsubmit="return confirm('메시지를 보내시겠습니까?');">
                         <p>관리자 인증
                             <input class="form-control" type="current-password" name="login"/></p>
                         <p>타이틀</p><input class="form-control" name="msgtitle" type="text"/>
@@ -182,11 +184,11 @@ if (typeof window.FileReader == 'undefined') {
 
         return false;
     };
-    
-function checkGroup() {
-    var obj = document.getElementById("select1");
-    document.getElementById("demo").innerHTML = obj.options[obj.selectedIndex].text;
-}
+    	
+	function checkGroup() {
+	    var obj = document.getElementById("select1");
+	//     document.getElementById("demo").innerHTML = obj.options[obj.selectedIndex].text;
+	}
 </script>
 
 <!-- <script type="text/javascript"> function strReplace(subject, search,
